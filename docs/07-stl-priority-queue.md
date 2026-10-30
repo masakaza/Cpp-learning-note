@@ -6,13 +6,7 @@
 
 ### 结构示意图
 
-```mermaid
-flowchart TB
-  A["堆顶 top：最大值"] --> B["较大子节点"]
-  A --> C["较小子节点"]
-  B --> D["其他节点"]
-  C --> E["其他节点"]
-```
+![07-stl-priority-queue 结构与操作示意图](images/priority-queue.svg)
 
 这是堆的逻辑关系示意，不代表底层元素按树形连续存放。
 
