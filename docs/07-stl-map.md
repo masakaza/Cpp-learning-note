@@ -8,15 +8,7 @@
 
 ### 结构示意图
 
-```mermaid
-flowchart TB
-  A["map：按 key 排序"] --> B["key: 1"]
-  A --> C["key: 2"]
-  A --> D["key: 3"]
-  B --> E["value: ..."]
-  C --> F["value: ..."]
-  D --> G["value: ..."]
-```
+![07-stl-map 结构与操作示意图](images/map-tree.svg)
 
 ## 2. 创建与插入
 
