@@ -1,185 +1,55 @@
-# 07A · STL 常用容器详解
+# 07A · STL 常用容器详解与选择
 
-本篇配合 [STL 总览](07-stl.md) 学习。容器没有“绝对最好”，应根据访问方式、插入删除位置、是否需要排序和是否需要唯一键来选择。
+本篇是 STL 容器的总览索引。每种容器的结构图、核心概念、可用数据操作接口和易错点已拆分到独立笔记，方便按主题学习。
 
 ## 1. 序列容器
 
-### `vector`
+| 容器 | 结构与特点 | 独立笔记 |
+|---|---|---|
+| `vector` | 连续动态数组，随机访问快 | [vector](07-stl-vector.md) |
+| `string` | 自动管理字符序列，支持查找和拼接 | [string](07-stl-string.md) |
+| `deque` | 双端队列，两端操作方便 | [deque](07-stl-deque.md) |
+| `list` | 双向链表，已知位置插入删除方便 | [list](07-stl-list.md) |
 
-动态数组，元素连续存储，支持快速下标访问。末尾添加通常很快；在中间插入或删除通常需要移动后续元素。
+## 2. 容器适配器
 
-```cpp
-std::vector<int> v{3, 1, 4};
-v.push_back(2);
-v.insert(v.begin() + 1, 9); // 在第二个元素前插入
-v.erase(v.begin());          // 删除首元素
-```
+| 容器 | 访问规则 | 独立笔记 |
+|---|---|---|
+| `stack` | LIFO，后进先出，只访问栈顶 | [stack](07-stl-stack.md) |
+| `queue` | FIFO，先进先出，只访问队首/队尾 | [queue](07-stl-queue.md) |
+| `priority_queue` | 优先级最高的元素先访问，默认最大堆 | [priority_queue](07-stl-priority-queue.md) |
 
-### `deque`
+适配器只提供受限接口，不像 vector/list 一样提供迭代器供外部遍历。
 
-双端队列，支持两端高效插入/删除，支持下标访问。
+## 3. 关联容器
 
-```cpp
-#include <deque>
-std::deque<int> d{2, 3};
-d.push_front(1);
-d.push_back(4);
-d.pop_front();
-d.pop_back();
-```
+| 容器 | 主要特点 | 独立笔记 |
+|---|---|---|
+| `set` / `multiset` | 按键排序；前者键唯一，后者允许重复 | [set / multiset](07-stl-set.md) |
+| `map` / `multimap` | 按 key 排序保存键值对；multimap 允许重复 key | [map / multimap](07-stl-map.md) |
+| `unordered_set` / `unordered_multiset` | 基于哈希表的集合 | [无序关联容器](07-stl-unordered.md) |
+| `unordered_map` / `unordered_multimap` | 基于哈希表的键值映射 | [无序关联容器](07-stl-unordered.md) |
 
-### `list`
+## 4. 工具类型
 
-双向链表，不支持 `list[i]`，也不能使用要求随机访问迭代器的 `std::sort`。在已取得位置迭代器时，插入和删除节点很方便。
+- [pair](07-stl-pair.md)：将两个可能不同类型的值组合成一个对象。它不是容器，但常用于 map 元素和 set/map 的插入返回结果。
 
-```cpp
-#include <list>
-std::list<int> values{3, 1, 2};
-values.push_front(0);
-values.sort(); // list 自己的成员函数
-values.remove(2); // 删除值为 2 的元素
-```
+## 5. 如何选择容器
 
-## 2. 容器适配器：`stack`、`queue`、`priority_queue`
+| 需求 | 可优先考虑 |
+|---|---|
+| 频繁下标访问、尾部追加 | `vector` |
+| 头尾都要频繁插入删除 | `deque` |
+| 已知位置频繁插入删除，且不需要随机访问 | `list` |
+| 后进先出 | `stack` |
+| 先进先出 | `queue` |
+| 每次取出当前最大/最小优先级 | `priority_queue` |
+| 元素唯一且自动排序 | `set` |
+| key-value 映射且按 key 排序 | `map` |
+| 不要求顺序，关注平均查找效率 | `unordered_set` / `unordered_map` |
 
-适配器只暴露特定操作接口，不提供普通序列容器的全部功能。
+## 6. 学习建议
 
-### `stack`：后进先出（LIFO）
+先掌握 vector 和 string，再学习 deque/list 的结构差异；随后学习 stack、queue 和 priority_queue 的访问规则；最后比较 set/map 与 unordered 系列。每篇独立笔记均列出对应容器可以使用的数据操作，不要把不同容器的接口混为一谈。
 
-```cpp
-#include <stack>
-std::stack<int> s;
-s.push(10);
-s.push(20);
-std::cout << s.top(); // 20
-s.pop();              // 只删除，不返回元素
-```
-
-常见接口：`push`、`pop`、`top`、`empty`、`size`。使用 `top()` 前先判断非空。
-
-### `queue`：先进先出（FIFO）
-
-```cpp
-#include <queue>
-std::queue<int> q;
-q.push(10);
-q.push(20);
-std::cout << q.front(); // 10
-q.pop();                // 删除队首，不返回元素
-```
-
-常见接口：`push`、`pop`、`front`、`back`、`empty`、`size`。它适合排队、任务缓存和消息缓冲等场景。
-
-### `priority_queue`：优先队列
-
-默认情况下，数值最大的元素优先出队。
-
-```cpp
-#include <queue>
-std::priority_queue<int> pq;
-pq.push(10);
-pq.push(30);
-pq.push(20);
-std::cout << pq.top(); // 30
-pq.pop();
-```
-
-若希望最小值优先，可写：
-
-```cpp
-std::priority_queue<int, std::vector<int>, std::greater<int>> min_pq;
-```
-
-这行还需要包含 `<vector>` 和 `<functional>`。
-
-## 3. 有序关联容器：`set` 与 `map`
-
-### `set` / `multiset`
-
-- `set`：元素自动按比较规则排序，且键唯一。
-- `multiset`：允许重复键。
-- 通常使用平衡搜索树实现，查找、插入、删除的复杂度一般为 `O(log n)`。
-
-```cpp
-#include <set>
-std::set<int> s{3, 1, 2, 2};
-for (int x : s) std::cout << x << ' '; // 1 2 3
-if (s.find(2) != s.end()) std::cout << "找到了 2";
-s.insert(4);
-s.erase(1);
-```
-
-### `map` / `multimap`
-
-`map` 保存键值对 `key -> value`，键唯一并按键排序。可以把它理解为“通过键查找对应的值”。
-
-```cpp
-#include <map>
-#include <string>
-std::map<std::string, int> scores;
-scores["Alice"] = 95;  // 不存在时会创建键，并对 int 值进行值初始化
-scores["Bob"] = 88;
-
-for (const auto& item : scores) {
-    std::cout << item.first << ": " << item.second << '\n';
-}
-```
-
-- `item.first` 是键，`item.second` 是值。
-- `map[key]` 在键不存在时会插入一个新元素，因此只查询、不想插入时可考虑 `find()` 或 `at()`。
-- `multimap` 允许多个元素具有相同键，但不提供 `operator[]`。
-
-## 4. 无序关联容器：`unordered_set` 与 `unordered_map`
-
-基于哈希表，元素遍历顺序不保证按大小或插入顺序排列。查找、插入平均通常为 `O(1)`，但在哈希冲突严重时可能退化。
-
-```cpp
-#include <unordered_map>
-#include <string>
-std::unordered_map<std::string, int> inventory;
-inventory["pen"] = 12;
-inventory["book"] = 5;
-
-if (inventory.find("pen") != inventory.end()) {
-    std::cout << inventory.at("pen");
-}
-```
-
-选择有序还是无序容器：需要稳定的键排序时使用 `map` / `set`；更关注平均查找速度且不依赖顺序时，可以考虑 `unordered_map` / `unordered_set`。
-
-## 5. 容器对比速查
-
-| 容器 | 访问方式 | 典型优势 | 注意点 |
-|---|---|---|---|
-| `vector` | 下标、迭代器 | 随机访问快，末尾追加方便 | 中间插入删除成本高，扩容会使迭代器失效 |
-| `deque` | 下标、迭代器 | 两端操作方便 | 内存不保证连续 |
-| `list` | 双向迭代器 | 已知位置的插入删除方便 | 无下标随机访问，额外节点开销 |
-| `stack` | 只看栈顶 | 后进先出 | 不能遍历或随机访问 |
-| `queue` | 队首/队尾 | 先进先出 | 不能随机访问 |
-| `priority_queue` | 只看最高优先级 | 快速获取当前优先元素 | 默认最大值优先，不能直接遍历内部元素 |
-| `set` | 迭代器、按键查找 | 键唯一且自动排序 | 插入/查找通常 `O(log n)` |
-| `map` | 按键访问 | 键值映射且自动排序 | `operator[]` 可能插入新键 |
-| `unordered_map` | 按键访问 | 平均查找通常 `O(1)` | 无序，复杂度存在最坏情况 |
-
-## 6. `pair` 与 `map` 的关系
-
-`std::pair<A, B>` 把两个值组合在一起，成员为 `first` 和 `second`。`map` 中每个元素就是键和值组成的 pair。
-
-```cpp
-#include <iostream>
-#include <utility>
-#include <string>
-int main() {
-    std::pair<std::string, int> student{"Alice", 95};
-    std::cout << student.first << ' ' << student.second << '\n';
-    auto another = std::make_pair(std::string("Bob"), 88);
-}
-```
-
-## 7. 常见错误
-
-1. 对空的 `stack` 调用 `top()`、对空的 `queue` 调用 `front()`、对空容器调用 `pop()`：先检查 `empty()`。
-2. 认为 `pop()` 会返回删除的元素：不会，需要先读取 `top()` 或 `front()`。
-3. 认为 `map[key]` 只是读取：键不存在时它会插入。
-4. 对 `list` 使用 `list[i]` 或 `std::sort(list.begin(), list.end())`：不支持。使用 `list.sort()`。
-5. 假定 `unordered_map` 遍历顺序固定：不要依赖其顺序。
+算法是独立于具体容器的一组通用操作，见 [STL 算法、迭代器与 lambda](07-stl-algorithms.md)。
