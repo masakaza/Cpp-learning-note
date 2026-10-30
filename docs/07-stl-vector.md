@@ -8,15 +8,7 @@
 
 ### 结构示意图
 
-```mermaid
-flowchart LR
-  A["vector 对象"] --> B["连续内存区域"]
-  B --> C["[0]"]
-  B --> D["[1]"]
-  B --> E["[2]"]
-  B --> F["[3]"]
-  B --> G["..."]
-```
+![07-stl-vector 结构与操作示意图](images/vector-operations.svg)
 
 可把它理解为一排连续编号的格子。下标从 0 开始，元素之间没有链表节点指针。
 
