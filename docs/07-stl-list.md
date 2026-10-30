@@ -10,6 +10,10 @@
 
 ![07-stl-list 结构与操作示意图](images/list-operations.svg)
 
+![list 原始双向链表示意图](https://971000043-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F4jcp9JrFSUV0Enu5fcXK%2Fuploads%2FFZ4cY17NETgMwvfXSLsi%2FIMG_1587.jpeg?alt=media&token=1bf6ec73-db84-4fa9-8a3e-5ec62ada49b9)
+
+> 原图出处：Cui Jiacai，《C++ STL Tutorial》「[list - 链表](https://cui-jiacai.gitbook.io/c++-stl-tutorial/rong-qi-container/list-lian-biao)」章节。
+
 常见标准库实现采用带哨兵节点的双向链表；不要把某一种内部实现细节当作所有实现必须采用的唯一布局。
 
 ## 2. 创建与赋值
