@@ -8,12 +8,7 @@
 
 ### 结构示意图
 
-```mermaid
-flowchart LR
-  A["队首 front：先出队"] --> B["元素 10"] --> C["元素 20"] --> D["元素 30"] --> E["队尾 back：后入队"]
-  F["pop：从队首删除"] -.-> A
-  G["push：从队尾添加"] -.-> E
-```
+![07-stl-queue 结构与操作示意图](images/queue-operations.svg)
 
 ## 2. 创建与常用操作
 
