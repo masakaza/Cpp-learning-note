@@ -10,6 +10,10 @@
 
 ![07-stl-stack 结构与操作示意图](images/stack-operations.svg)
 
+![stack 原始结构示意图](https://971000043-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F4jcp9JrFSUV0Enu5fcXK%2Fuploads%2Fj1ZhZTan5F0k9d77UffI%2FIMG_1585.jpeg?alt=media&token=3e4f9a2d-86cf-4232-af49-a451f5bc0139)
+
+> 原图出处：Cui Jiacai，《C++ STL Tutorial》「[stack - 栈](https://cui-jiacai.gitbook.io/c++-stl-tutorial/rong-qi-container/stack-zhan)」章节。
+
 ## 2. 创建
 
 ```cpp
