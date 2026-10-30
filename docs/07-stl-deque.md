@@ -8,12 +8,7 @@
 
 ### 结构示意图
 
-```mermaid
-flowchart LR
-  A["头部"] --> B["[0]"] --> C["[1]"] --> D["[2]"] --> E["尾部"]
-  F["push_front / pop_front"] -.-> A
-  G["push_back / pop_back"] -.-> E
-```
+![07-stl-deque 结构与操作示意图](images/deque-operations.svg)
 
 ## 2. 创建与赋值
 
