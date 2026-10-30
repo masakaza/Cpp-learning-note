@@ -33,9 +33,13 @@ cpp-learning-handbook/
 4. [类与对象](docs/04-classes-and-oop.md)：封装、构造/析构、拷贝、继承、多态。
 5. [运算符重载](docs/05-operator-overloading.md)：让自定义类型支持自然的运算表达式。
 6. [模板](docs/06-templates.md)：函数模板、类模板、模板实例化与文件组织。
-7. [STL 总览](docs/07-stl.md)：容器、迭代器、算法，以及 `vector`、`string`、`queue`。
-   - [常用容器详解](docs/07-stl-containers.md)：`deque`、`list`、`stack`、`queue`、`priority_queue`、`set`、`map`、哈希容器和 `pair`。
-   - [算法、迭代器与 lambda](docs/07-stl-algorithms.md)：`for_each`、`sort`、`find`、`count`、`remove`、`unique`、`accumulate` 等。
+7. **STL 专题**：先看 [STL 总览](docs/07-stl.md)，再按需学习下面的独立笔记。
+   - [容器总览与选择](docs/07-stl-containers.md)
+   - 序列容器：[vector](docs/07-stl-vector.md) · [string](docs/07-stl-string.md) · [deque](docs/07-stl-deque.md) · [list](docs/07-stl-list.md)
+   - 容器适配器：[stack](docs/07-stl-stack.md) · [queue](docs/07-stl-queue.md) · [priority_queue](docs/07-stl-priority-queue.md)
+   - 关联容器：[set / multiset](docs/07-stl-set.md) · [map / multimap](docs/07-stl-map.md) · [无序关联容器](docs/07-stl-unordered.md)
+   - 工具类型：[pair](docs/07-stl-pair.md)
+   - [STL 算法、迭代器与 lambda](docs/07-stl-algorithms.md)：for_each、sort、find、count、remove、unique、accumulate 等。
 8. [文件操作与线程](docs/08-files-and-threads.md)：文本/二进制文件和 `std::thread`。
 9. [调试与代码习惯](docs/09-practice-and-debugging.md)：编译、排错、资源管理和 Git 协作。
 
