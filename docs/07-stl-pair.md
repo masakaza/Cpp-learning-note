@@ -8,11 +8,7 @@
 
 ### 结构示意图
 
-```mermaid
-flowchart TB
-  A["std::pair"] --> B["first：第一个值"]
-  A --> C["second：第二个值"]
-```
+![pair 结构示意图](images/pair-structure.svg)
 
 ## 2. 创建方式
 
