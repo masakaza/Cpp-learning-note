@@ -8,15 +8,7 @@
 
 ### 结构示意图
 
-```mermaid
-flowchart LR
-  A["std::string"] --> B["字符序列"]
-  B --> C["'h'"]
-  B --> D["'e'"]
-  B --> E["'l'"]
-  B --> F["'l'"]
-  B --> G["'o'"]
-```
+![07-stl-string 结构与操作示意图](images/string-operations.svg)
 
 ## 2. 创建与赋值
 
