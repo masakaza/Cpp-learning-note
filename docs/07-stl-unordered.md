@@ -6,15 +6,7 @@
 
 ### 结构示意图
 
-```mermaid
-flowchart TB
-  A["哈希函数 hash(key)"] --> B["桶索引"]
-  B --> C["Bucket 0"]
-  B --> D["Bucket 1"]
-  B --> E["Bucket 2"]
-  C --> F["元素 / 冲突链"]
-  D --> G["元素 / 冲突链"]
-```
+![07-stl-unordered 结构与操作示意图](images/unordered-buckets.svg)
 
 不同实现处理桶内冲突的方式可能不同；学习重点是哈希函数把键映射到桶，冲突时需要进一步比较键。
 
