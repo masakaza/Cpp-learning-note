@@ -10,6 +10,10 @@
 
 ![07-stl-queue 结构与操作示意图](images/queue-operations.svg)
 
+![queue 原始结构示意图](https://971000043-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F4jcp9JrFSUV0Enu5fcXK%2Fuploads%2FUqKbvXiCwaR7GcQ05kXd%2FIMG_1586.jpeg?alt=media&token=d3e1c851-8790-4900-ae8b-262e01ba8a0e)
+
+> 原图出处：Cui Jiacai，《C++ STL Tutorial》「[queue - 队列](https://cui-jiacai.gitbook.io/c++-stl-tutorial/rong-qi-container/queue-dui-lie)」章节。
+
 ## 2. 创建与常用操作
 
 ```cpp
