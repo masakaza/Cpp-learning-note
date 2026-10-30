@@ -10,6 +10,12 @@
 
 ![07-stl-vector 结构与操作示意图](images/vector-operations.svg)
 
+![vector 原始结构示意图](https://971000043-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F4jcp9JrFSUV0Enu5fcXK%2Fuploads%2FwOcATtLA7TPligYyNsnw%2F%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%2006-07-2021%2022.56.05.png?alt=media&token=ca1c1b43-78c4-42be-8029-2c50f1b0dcba)
+
+<text></text>
+
+> 原图出处：Cui Jiacai，《C++ STL Tutorial》「[vector - 向量](https://cui-jiacai.gitbook.io/c++-stl-tutorial/rong-qi-container/vector-xiang-liang)」章节。
+
 可把它理解为一排连续编号的格子。下标从 0 开始，元素之间没有链表节点指针。
 
 ## 2. 创建与初始化
