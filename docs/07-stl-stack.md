@@ -8,14 +8,7 @@
 
 ### 结构示意图
 
-```mermaid
-flowchart TB
-  A["栈顶：最后压入"] --> B["元素 30"]
-  B --> C["元素 20"]
-  C --> D["栈底：最先压入"]
-  E["push：压入栈顶"] --> A
-  A --> F["pop：移除栈顶"]
-```
+![07-stl-stack 结构与操作示意图](images/stack-operations.svg)
 
 ## 2. 创建
 
