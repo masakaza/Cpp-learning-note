@@ -10,6 +10,14 @@
 
 ![07-stl-deque 结构与操作示意图](images/deque-operations.svg)
 
+![deque 原始结构示意图](https://971000043-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F4jcp9JrFSUV0Enu5fcXK%2Fuploads%2FsHmjt1iVVVkVxWEOGgvs%2FIMG_1583.jpeg?alt=media&token=b2d1ab94-dd74-40a3-9e4d-13afa6e38dbb)
+
+> 原图出处：Cui Jiacai，《C++ STL Tutorial》「[deque - 双向队列](https://cui-jiacai.gitbook.io/c++-stl-tutorial/rong-qi-container/deque-shuang-xiang-dui-lie)」章节。
+
+![deque 底层实现原理示意图](https://971000043-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F4jcp9JrFSUV0Enu5fcXK%2Fuploads%2FRZ95iPL2Vl8mSTALXMwD%2FIMG_1584.jpeg?alt=media&token=9fefe149-9396-4414-9867-3244c5e1bd7f)
+
+> 原图出处：Cui Jiacai，《C++ STL Tutorial》「[deque - 双向队列](https://cui-jiacai.gitbook.io/c++-stl-tutorial/rong-qi-container/deque-shuang-xiang-dui-lie)」章节。
+
 ## 2. 创建与赋值
 
 ```cpp
